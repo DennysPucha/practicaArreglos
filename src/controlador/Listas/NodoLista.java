@@ -3,7 +3,7 @@ package controlador.Listas;
  *
  * @author Dennys
  */
-public class NodoLista <E> {
+public class NodoLista <E>  { //CASA int float double
     private E dato;
     private NodoLista<E> siguiente;
 
@@ -32,5 +32,12 @@ public class NodoLista <E> {
     public void setSiguiente(NodoLista<E> siguiente) {
         this.siguiente = siguiente;
     }
+
+    @Override
+    public String toString() {
+        return "NodoLista{" + "dato=" + dato + ", siguiente=" + siguiente + '}';
+    }
+    
+    
 
 }

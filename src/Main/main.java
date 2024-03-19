@@ -61,6 +61,10 @@ public class main {
 //            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
 //        }
         
+        ListaEnlazada<Casa> listCasa= new ListaEnlazada<>();
+        listCasa.insertar(s5);
+        listCasa.insertar(s4);
+        
         
     }
 

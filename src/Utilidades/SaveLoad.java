@@ -29,6 +29,7 @@ public class SaveLoad {
         Object objeto = JSON_MAPPER.readValue(new File(rutaArchivo), claseObjeto);
         return objeto;
     }
+    
 //
 //     public static <T> void guardarEnXml(T objeto, String rutaArchivo) throws IOException, JAXBException {
 //        if (!rutaArchivo.endsWith(".xml")) {

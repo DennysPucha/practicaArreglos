@@ -197,5 +197,11 @@ public class ListaEnlazada<E> {
         this.size = 0;
     }
 
+    @Override
+    public String toString() {
+        return "ListaEnlazada{" + "cabecera=" + cabecera + '}';
+    }
+
+    
 
 }
