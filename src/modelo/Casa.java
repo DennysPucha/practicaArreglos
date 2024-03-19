@@ -18,7 +18,7 @@ public class Casa {
     private String direccion;
 
     public Casa() {
-//        System.out.println("Esta llamando a este");
+        this.estado=true;
     }
 
     public Casa(Color color, String nombre, String direccion) {

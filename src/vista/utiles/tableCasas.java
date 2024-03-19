@@ -12,7 +12,8 @@ import modelo.Casa;
  *
  * @author Dennys
  */
-public class tableCasas extends AbstractTableModel{
+public class tableCasas extends AbstractTableModel {
+
     private CasaController cControl;
 
     public CasaController getcControl() {
@@ -23,40 +24,51 @@ public class tableCasas extends AbstractTableModel{
         this.cControl = cControl;
     }
 
-    
     @Override
     public int getRowCount() {
-        return cControl.getCasa().length;
+        return cControl.getCasas().length;
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
     public String getColumnName(int column) {
-        switch (column) {
-            case 0: return "NUM";
-            case 1: return "NOMBRE";   
-            case 2: return "COLOR";
-            case 3: return "DIRECCION";
-                default: return null;
-            }
+        return switch (column) {
+            case 0 ->
+                "NUM";
+            case 1 ->
+                "NOMBRE";
+            case 2 ->
+                "COLOR";
+            case 3 ->
+                "DIRECCION";
+            case 4-> 
+                "HABITACIONES";
+            default ->
+                null;
+        };
     }
 
-    
-        
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Casa e= cControl.obtenerCasa(rowIndex);
-            switch (columnIndex) {
-            case 0: return (e != null)? rowIndex+1 : "NO DEFINIDO";
-            case 1: return (e != null)? e.getNombre() : "NO DEFINIDO";   
-            case 2: return (e != null)? e.getColor() : "NO DEFINIDO";
-            case 3: return (e != null)? e.getDireccion(): "NO DEFINIDO";
-           default: return null;
+        try {
+            Casa e = cControl.obtenerCasa(rowIndex);
+            return switch (columnIndex) {
+                case 0 ->(e != null) ? rowIndex + 1 : "NO DEFINIDO";
+                case 1 ->(e != null) ? e.getNombre() : "NO DEFINIDO";
+                case 2 ->(e != null) ? e.getColor() : "NO DEFINIDO";
+                case 3 -> (e != null) ? e.getDireccion() : "NO DEFINIDO";
+                case 4 ->(e!=null)? e.getCuartos(): "NO DEFINIDO";
+                default ->
+                    null;
+            };
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
-    }
-    
+
 }

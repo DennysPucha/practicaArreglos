@@ -4,6 +4,9 @@
  */
 package controlador;
 
+import exceptions.PosicionFueraDeLimites;
+import exceptions.SinPosicionesParaInsertar;
+import java.lang.reflect.Field;
 import modelo.Casa;
 
 /**
@@ -21,37 +24,55 @@ public class CasaController {
         }
     }
 
-    public Boolean insertarCasa(Integer posicion, Casa casa) {
+    
+    public Boolean insertar(Casa casa) throws SinPosicionesParaInsertar{
+        int posicionLibre=-1;
+        for (int i = 0; i < this.casas.length; i++) {
+            if(this.casas[i].getColor()==null && this.casas[i].getCuartos()==null && this.casas[i].getDireccion()==null && this.casas[i].getNombre()==null){
+                posicionLibre=i;
+                break;
+            }
+        }
+        if(posicionLibre==-1){
+            throw new SinPosicionesParaInsertar();
+        }
+        this.casas[posicionLibre]=casa;
+        return true;
+    }
+    
+    
+    public Boolean insertarEnPosicion(Integer posicion, Casa casa) throws PosicionFueraDeLimites{
         if (posicion > this.casas.length) {
-            System.out.println("Tamanio mas alto que el del arreglo");
-            return false;
+            throw new PosicionFueraDeLimites();
         }
         this.casas[posicion] = casa;
         return true;
     }
 
-    public Boolean eliminarCasa(Integer posicion) {
+    
+    public Boolean eliminarCasa(Integer posicion) throws PosicionFueraDeLimites{
         if (posicion > this.casas.length) {
-            System.out.println("Tamanio mas alto que el del arreglo");
-            return false;
+            throw  new PosicionFueraDeLimites();
         }
         this.casas[posicion]=new Casa();
         return true;
     }
 
-    public Casa obtenerCasa(Integer posicion){ //4
-        if (posicion > this.casas.length) {
-            System.out.println("Tamanio mas alto que el del arreglo");
-            return null;
-        }
-        return this.casas[posicion];//[null,null,null,null,null]
+
+    public Casa obtenerCasa(Integer posicion) throws PosicionFueraDeLimites{ //4
+          if (posicion > this.casas.length){
+              throw new PosicionFueraDeLimites();
+          } 
+          return this.casas[posicion];
     }
     
-    public Casa[] getCasa() {
+    
+    
+    public Casa[] getCasas() {
         return casas;
     }
 
-    public void setCasa(Casa[] casa) {
+    public void setCasas(Casa[] casa) {
         this.casas = casa;
     }
 
