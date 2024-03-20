@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.awt.List;
 
 /**
@@ -11,11 +12,17 @@ import java.awt.List;
  * @author Dennys
  */
 public class Casa {
+    @JsonProperty("color")
     private Color color;
+    @JsonProperty("nombre")
     private String nombre;
+    @JsonProperty("cuartos")
     private Integer cuartos;
+    @JsonProperty("estado")
     private Boolean estado;
+    @JsonProperty("direccion")
     private String direccion;
+
 
     public Casa() {
         this.estado=true;

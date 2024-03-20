@@ -1,0 +1,40 @@
+{
+  "cabecera" : {
+    "dato" : {
+      "color" : "Rojo",
+      "nombre" : "axax",
+      "cuartos" : 3,
+      "estado" : true,
+      "direccion" : "axax"
+    },
+    "siguiente" : {
+      "dato" : {
+        "color" : "Rojo",
+        "nombre" : "axax",
+        "cuartos" : 3,
+        "estado" : true,
+        "direccion" : "axax"
+      },
+      "siguiente" : {
+        "dato" : {
+          "color" : "Rojo",
+          "nombre" : "axax",
+          "cuartos" : 3,
+          "estado" : true,
+          "direccion" : "axax"
+        },
+        "siguiente" : {
+          "dato" : {
+            "color" : "Rojo",
+            "nombre" : "axax",
+            "cuartos" : 3,
+            "estado" : true,
+            "direccion" : "axax"
+          },
+          "siguiente" : null
+        }
+      }
+    }
+  },
+  "size" : 4
+}

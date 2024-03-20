@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import exceptions.PosicionFueraDeLimites;
 import exceptions.SinPosicionesParaInsertar;
 import java.lang.reflect.Field;
@@ -14,7 +15,7 @@ import modelo.Casa;
  * @author Dennys
  */
 public class CasaController {
-
+     @JsonProperty("casas")
     private Casa[] casas;
     
     public CasaController(Integer size) { //5

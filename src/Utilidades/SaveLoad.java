@@ -13,20 +13,22 @@ import java.io.IOException;
  *
  * @author Dennys
  */
-public class SaveLoad {
-    
+public class SaveLoad { 
+   
     public static <Object> void guardarEnJson(Object objeto, String rutaArchivo) throws IOException {
-        ObjectMapper JSON_MAPPER = new ObjectMapper();
-        JSON_MAPPER.enable(SerializationFeature.INDENT_OUTPUT); 
-        if (!rutaArchivo.endsWith(".json")) {
+        ObjectMapper JSON_MAPPER = new ObjectMapper(); //define un objeto de json mapper quien mappeara el json del objeto que queramos
+        JSON_MAPPER.enable(SerializationFeature.INDENT_OUTPUT); //permite habilitar la indentacion del json
+        if (!rutaArchivo.endsWith(".json")) { //la extension
             rutaArchivo += ".json";
         }
-        JSON_MAPPER.writeValue(new File(rutaArchivo), objeto);
+        JSON_MAPPER.writeValue(new File(rutaArchivo), objeto);//crea un archivo en la ruta que se defina mas el objeto que queramos
+        System.out.println("Se ha guardado correctamente");
     }
 
+    //deserealizar
     public static <Object> Object cargarJson(Class<Object> claseObjeto, String rutaArchivo) throws IOException {
-        ObjectMapper JSON_MAPPER = new ObjectMapper();
-        Object objeto = JSON_MAPPER.readValue(new File(rutaArchivo), claseObjeto);
+        ObjectMapper JSON_MAPPER = new ObjectMapper(); //crea una instancia del objeto
+        Object objeto = JSON_MAPPER.readValue(new File(rutaArchivo), claseObjeto); // lo lee y lo guarda en un objeto de esa clase     
         return objeto;
     }
     

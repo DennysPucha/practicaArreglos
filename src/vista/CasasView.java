@@ -4,9 +4,11 @@
  */
 package vista;
 
+import Utilidades.SaveLoad;
 import controlador.CasaController;
 import exceptions.PosicionFueraDeLimites;
 import exceptions.SinPosicionesParaInsertar;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import modelo.Casa;
 import modelo.Color;
@@ -148,7 +150,32 @@ public class CasasView extends javax.swing.JFrame {
         txtEstaEditando.setVisible(true);
         return true;
     }
+    
+    public Boolean guardarArchivo(){
+        if(this.cControl==null){
+            return false;
+        }else{
+            try {
+                SaveLoad.guardarEnJson(cControl, "rutadefinida");
+                return true;
+            } catch (IOException e) {
+                System.out.println(e);
+                return false;
+            }
+        }
+    }
 
+    public Boolean cargarArchivo(){
+        try {
+            this.cControl= SaveLoad.cargarJson(CasaController.class, "rutadefinida.json");
+            cargarTabla();
+            return true;
+        } catch (IOException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -345,12 +372,27 @@ public class CasasView extends javax.swing.JFrame {
         btnCargar.setText("File");
 
         BtnCargar.setText("Cargar");
+        BtnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCargarActionPerformed(evt);
+            }
+        });
         btnCargar.add(BtnCargar);
 
         btnGuardarJson.setText("Guardar");
+        btnGuardarJson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarJsonActionPerformed(evt);
+            }
+        });
         btnCargar.add(btnGuardarJson);
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         btnCargar.add(btnSalir);
 
         jMenuBar1.add(btnCargar);
@@ -414,6 +456,26 @@ public class CasasView extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         editarCasa();
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
+        if(cargarArchivo()){
+             JOptionPane.showMessageDialog(rootPane, "Se cargo correctamente", "Correcto", 1);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No se cargo", "Error", 3);
+        }
+    }//GEN-LAST:event_BtnCargarActionPerformed
+
+    private void btnGuardarJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarJsonActionPerformed
+        if(guardarArchivo()){
+            JOptionPane.showMessageDialog(rootPane, "Se guardo correctamente", "Correcto", 1);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No se guardo", "Error", 3);
+        }
+    }//GEN-LAST:event_btnGuardarJsonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  */
 package vista;
 
+import Utilidades.SaveLoad;
 import controlador.CasaController;
 import exceptions.PosicionFueraDeLimites;
 import exceptions.SinPosicionesParaInsertar;
@@ -15,6 +16,7 @@ import vista.utiles.utilesview;
 import controlador.Listas.ListaEnlazada;
 import controlador.Listas.exceptions.ListaNullaException;
 import controlador.Listas.exceptions.PosicionNoEncontradaException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vista.utiles.tableCasasListas;
@@ -25,9 +27,9 @@ import vista.utiles.tableCasasListas;
  */
 public class CasasViewListas extends javax.swing.JFrame {
 
-    ListaEnlazada<Casa> nuevaLista= new ListaEnlazada<>();
+    ListaEnlazada nuevaLista = new ListaEnlazada<>();
 //    private Integer seleccionador=0;
-    tableCasasListas nc =new tableCasasListas();
+    tableCasasListas nc = new tableCasasListas();
     Boolean estaEditando = false;
 
     /**
@@ -39,7 +41,6 @@ public class CasasViewListas extends javax.swing.JFrame {
         txtEstaEditando.setVisible(false);
     }
 
-
     public void cargarCbx() {
         utilesview.cargarOptionsCbx(cbxColor);
     }
@@ -49,7 +50,6 @@ public class CasasViewListas extends javax.swing.JFrame {
         tblCasas.setModel(nc);
         tblCasas.updateUI();
     }
-
 
     public Casa llenarCasaConAtributos() {
         Casa aux = new Casa();
@@ -76,13 +76,13 @@ public class CasasViewListas extends javax.swing.JFrame {
             if (!estaEditando) {
                 this.nuevaLista.insertar(llenarCasaConAtributos());
             } else {
-                this.nuevaLista.insertarPosicion( llenarCasaConAtributos(),tblCasas.getSelectedRow());
-                estaEditando=false;
+                this.nuevaLista.insertarPosicion(llenarCasaConAtributos(), tblCasas.getSelectedRow());
+                estaEditando = false;
                 txtEstaEditando.setVisible(false);
-            }  
+            }
         } catch (PosicionNoEncontradaException ex) {
             Logger.getLogger(CasasViewListas.class.getName()).log(Level.SEVERE, null, ex);
-             JOptionPane.showMessageDialog(rootPane, "no puede insertar mas", "Arreglo llego a su limite", 2);
+            JOptionPane.showMessageDialog(rootPane, "no puede insertar mas", "Arreglo llego a su limite", 2);
         }
         cargarTabla();
         return true;
@@ -109,19 +109,19 @@ public class CasasViewListas extends javax.swing.JFrame {
         try {
             //GETSelectedrow=1
             Casa aux;
-            aux = this.nuevaLista.obtener(tblCasas.getSelectedRow());
-            
+            aux = (Casa) this.nuevaLista.obtener(tblCasas.getSelectedRow());
+
             //[CASA1,CASA2,CASA3]
             txtAreaDirecion.setText(aux.getDireccion());
             txtNombre.setText(aux.getNombre());
             spnHabitaciones.setValue((aux.getCuartos() != null) ? aux.getCuartos() : 5);
-            cbxColor.setSelectedItem((aux.getColor()!=null)? aux.getColor(): Color.valueOf("Rojo"));
+            cbxColor.setSelectedItem((aux.getColor() != null) ? aux.getColor() : Color.valueOf("Rojo"));
         } catch (ListaNullaException ex) {
             Logger.getLogger(CasasViewListas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (PosicionNoEncontradaException ex) {
             Logger.getLogger(CasasViewListas.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }
 
     public Boolean editarCasa() {
@@ -133,6 +133,28 @@ public class CasasViewListas extends javax.swing.JFrame {
         estaEditando = true;
         txtEstaEditando.setVisible(true);
         return true;
+    }
+
+    public Boolean guardarArchivo() {
+        try {
+            SaveLoad.guardarEnJson(nuevaLista, "rutadefinida");
+            return true;
+        } catch (IOException e) {
+            System.out.println(e);
+            return false;
+        }
+
+    }
+
+    public Boolean cargarArchivo() {
+        try {
+            this.nuevaLista = SaveLoad.cargarJson(ListaEnlazada.class, "rutadefinida.json");
+            cargarTabla();
+            return true;
+        } catch (IOException e) {
+            System.out.println(e);
+            return false;
+        }
     }
 
     /**
@@ -322,9 +344,19 @@ public class CasasViewListas extends javax.swing.JFrame {
         btnCargar.setText("File");
 
         BtnCargar.setText("Cargar");
+        BtnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCargarActionPerformed(evt);
+            }
+        });
         btnCargar.add(BtnCargar);
 
         btnGuardarJson.setText("Guardar");
+        btnGuardarJson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarJsonActionPerformed(evt);
+            }
+        });
         btnCargar.add(btnGuardarJson);
 
         btnSalir.setText("Salir");
@@ -378,6 +410,22 @@ public class CasasViewListas extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         editarCasa();
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnGuardarJsonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarJsonActionPerformed
+        if (guardarArchivo()) {
+            JOptionPane.showMessageDialog(rootPane, "Se guardo correctamente", "Correcto", 1);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No se guardo", "Error", 3);
+        }
+    }//GEN-LAST:event_btnGuardarJsonActionPerformed
+
+    private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
+        if (cargarArchivo()) {
+            JOptionPane.showMessageDialog(rootPane, "Se cargo correctamente", "Correcto", 1);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No se cargo", "Error", 3);
+        }
+    }//GEN-LAST:event_BtnCargarActionPerformed
 
     /**
      * @param args the command line arguments

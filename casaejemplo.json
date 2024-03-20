@@ -1,0 +1,10 @@
+{
+  "cabecera" : {
+    "dato" : 4,
+    "siguiente" : {
+      "dato" : 6,
+      "siguiente" : null
+    }
+  },
+  "size" : 2
+}
