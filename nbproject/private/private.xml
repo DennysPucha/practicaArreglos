@@ -4,20 +4,30 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/CasaController.java</file>
-            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/Color.java</file>
-            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/vista/CasasView.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/relaciones/interfazPrueba.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/vista/CasasViewListas.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/relaciones/interfazEspecial.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/rutadefinida2.json</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/NodoLista.java</file>
-            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/exceptions/PosicionNoEncontradaException.java</file>
-            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/ListaEnlazada.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/exceptions/PosicionFueraDeLimites.java</file>
-            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/exceptions/ListaNullaException.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/Main/main.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/vista/utiles/utilesview.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/vista/utiles/tableCasas.java</file>
-            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/Casa.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/exceptions/AtributoException.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/exceptions/SinPosicionesParaInsertar.java</file>
             <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/Utilidades/SaveLoad.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/Color.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/vista/utiles/tableCasasListas.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/relaciones/Cuarto.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/vista/CasasView.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/exceptions/PosicionNoEncontradaException.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/ListaEnlazada.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/controlador/Listas/exceptions/ListaNullaException.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/Casa.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/pruebaruta.json</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/rutadefinida.json</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/relaciones/Casa.java</file>
+            <file>file:/C:/Users/Dennys/Documents/NetBeansProjects/ProyectoPrueba/src/modelo/relaciones/Edificio.java</file>
         </group>
     </open-files>
 </project-private>
