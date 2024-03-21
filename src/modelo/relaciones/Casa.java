@@ -10,7 +10,7 @@ import controlador.Listas.ListaEnlazada;
  *
  * @author Dennys
  */
-public class Casa extends Edificio{
+public class Casa extends Edificio implements interfazPrueba{
    private int id;
    private String color;
    private String descripcion;
@@ -70,6 +70,16 @@ public class Casa extends Edificio{
     @Override
     public String toString() {
         return "Casa{" + "id=" + id + ", color=" + color + ", descripcion=" + descripcion + '}' + super.getDireccion()+ super.getPisos();
+    }
+
+    @Override
+    public void crearArchivos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void cargarArchivos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
  

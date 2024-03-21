@@ -96,5 +96,16 @@ public class main {
         newc.getPisos();
         
         System.out.println(newc);
+        CasaController ca=new CasaController(5);
+        try {
+            SaveLoad.guardarEnJson(ca, "pruebaruta");
+            CasaController aux=SaveLoad.cargarJson(CasaController.class, "pruebaruta.json");
+            System.out.println(aux);
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
     }
 }

@@ -1,0 +1,33 @@
+{
+  "casas" : [ {
+    "color" : null,
+    "nombre" : null,
+    "cuartos" : null,
+    "estado" : true,
+    "direccion" : null
+  }, {
+    "color" : null,
+    "nombre" : null,
+    "cuartos" : null,
+    "estado" : true,
+    "direccion" : null
+  }, {
+    "color" : null,
+    "nombre" : null,
+    "cuartos" : null,
+    "estado" : true,
+    "direccion" : null
+  }, {
+    "color" : null,
+    "nombre" : null,
+    "cuartos" : null,
+    "estado" : true,
+    "direccion" : null
+  }, {
+    "color" : null,
+    "nombre" : null,
+    "cuartos" : null,
+    "estado" : true,
+    "direccion" : null
+  } ]
+}

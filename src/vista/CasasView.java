@@ -163,12 +163,16 @@ public class CasasView extends javax.swing.JFrame {
                 return false;
             }
         }
+        
+        
     }
 
     public Boolean cargarArchivo(){
         try {
             this.cControl= SaveLoad.cargarJson(CasaController.class, "rutadefinida.json");
             cargarTabla();
+            verificarInicializacion();
+            btnAceptarArreglo.setEnabled(false);
             return true;
         } catch (IOException e) {
             System.out.println(e);

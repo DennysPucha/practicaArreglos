@@ -1,0 +1,49 @@
+{
+  "cabecera" : {
+    "dato" : {
+      "color" : "Azul",
+      "nombre" : "sacac",
+      "cuartos" : 0,
+      "estado" : true,
+      "direccion" : "saca"
+    },
+    "siguiente" : {
+      "dato" : {
+        "color" : "Azul",
+        "nombre" : "sacac",
+        "cuartos" : 0,
+        "estado" : true,
+        "direccion" : "saca"
+      },
+      "siguiente" : {
+        "dato" : {
+          "color" : "Azul",
+          "nombre" : "sacac",
+          "cuartos" : 0,
+          "estado" : true,
+          "direccion" : "saca"
+        },
+        "siguiente" : {
+          "dato" : {
+            "color" : "Azul",
+            "nombre" : "sacac",
+            "cuartos" : 0,
+            "estado" : true,
+            "direccion" : "sacafwf"
+          },
+          "siguiente" : {
+            "dato" : {
+              "color" : "Azul",
+              "nombre" : "sacac",
+              "cuartos" : 3,
+              "estado" : true,
+              "direccion" : "sacafwff"
+            },
+            "siguiente" : null
+          }
+        }
+      }
+    }
+  },
+  "size" : 5
+}

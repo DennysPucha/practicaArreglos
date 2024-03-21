@@ -15,8 +15,9 @@ import modelo.Casa;
  * @author Dennys
  */
 public class CasaController {
-     @JsonProperty("casas")
     private Casa[] casas;
+    
+    private CasaController(){}
     
     public CasaController(Integer size) { //5
         this.casas = new Casa[size];

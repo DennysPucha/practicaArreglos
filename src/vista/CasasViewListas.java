@@ -19,6 +19,7 @@ import controlador.Listas.exceptions.PosicionNoEncontradaException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import vista.utiles.tableCasasListas;
 
 /**
@@ -27,10 +28,11 @@ import vista.utiles.tableCasasListas;
  */
 public class CasasViewListas extends javax.swing.JFrame {
 
-    ListaEnlazada nuevaLista = new ListaEnlazada<>();
+    ListaEnlazada<Casa> nuevaLista = new ListaEnlazada<>();
 //    private Integer seleccionador=0;
     tableCasasListas nc = new tableCasasListas();
     Boolean estaEditando = false;
+    String rutaArchivo="";
 
     /**
      * Creates new form CasasView
@@ -39,6 +41,7 @@ public class CasasViewListas extends javax.swing.JFrame {
         initComponents();
         cargarCbx();
         txtEstaEditando.setVisible(false);
+        cargarTabla();
     }
 
     public void cargarCbx() {
@@ -137,24 +140,38 @@ public class CasasViewListas extends javax.swing.JFrame {
 
     public Boolean guardarArchivo() {
         try {
-            SaveLoad.guardarEnJson(nuevaLista, "rutadefinida");
-            return true;
+            JFileChooser fc = new JFileChooser();
+            int seleccion = fc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                rutaArchivo = fc.getSelectedFile().getPath();
+                SaveLoad.guardarEnJson(nuevaLista, rutaArchivo);
+                return true;
+            }
+            
         } catch (IOException e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Algo ocurrio mal");
             return false;
         }
-
+        return false;
     }
 
     public Boolean cargarArchivo() {
         try {
-            this.nuevaLista = SaveLoad.cargarJson(ListaEnlazada.class, "rutadefinida.json");
-            cargarTabla();
-            return true;
+            JFileChooser fc=new JFileChooser();
+            int seleccion=fc.showOpenDialog(this);
+            if(seleccion==JFileChooser.APPROVE_OPTION){
+                rutaArchivo=fc.getSelectedFile().getPath();
+                this.nuevaLista = SaveLoad.cargarJsonListaEnlazada(rutaArchivo, Casa.class);
+                cargarTabla();
+                return true;
+            }
         } catch (IOException e) {
             System.out.println(e);
             return false;
         }
+        return false;
+          
     }
 
     /**
